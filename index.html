@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Transmittter Calculator!</title>
+    </head>
+    <body>
+        <h1 style="display: flex; justify-content: center;">Level Transmittter Calculator!!</h1>
+        <div>
+            <p>High Height</p>
+            <input id="high-height" type="text">
+            <p>Low Height</p>
+            <input id="low-height" type="text">
+            <p>Measure Height</p>
+            <input id="measure" type="text">
+            <button id="calbtn">Calculate!!</button>
+            <h4>Pressure Output</h4>
+            <h5 id="psi-output">Psi : </h5>
+            <h5 id="kg-output">Kg/cm^2 : </h5>
+            <h4>Electric Output</h4>
+            <h5 id="v-output">Voltage : </h5>
+            <h5 id="mA-output">Current : </h5>
+
+        </div>
+    </body>
+
+    <script>
+        let high = document.getElementById('high-height');
+        let low = document.getElementById('low-height');
+        let measure = document.getElementById('measure');
+        let psi_output = document.getElementById('psi-output');
+        let kg_output = document.getElementById('kg-output');
+        let calbtn = document.getElementById('calbtn');
+        let v_output = document.getElementById('v-output');
+        let ma_output = document.getElementById('mA-output');
+                
+        function calculate(){
+            high = Number(high.value);
+            low = Number(low.value);
+            measure = Number(measure.value);
+            let psi_answer, kg_answer, volt_answer, mA_answer ;
+
+            psi_answer = ( (measure - low) / (high - low) ) * (15 - 3) + 3;
+            kg_answer = ( (measure - low) / (high - low) ) * (1 - 0.2) + 0.2;
+            mA_answer = ( (measure - low) / (high - low) ) * (20 - 4) + 4;
+            volt_answer = ( (measure - low) / (high - low) ) * (5 - 1) + 1;
+
+            psi_output.innerHTML += psi_answer;
+            kg_output.innerHTML += kg_answer;
+            v_output.innerHTML += volt_answer;
+            ma_output.innerHTML += mA_answer;
+
+            console.log("Calculate!!");
+            console.log("The answer is");
+            console.log("Psi Output : " + psi_answer + " psi");
+            console.log("Kgf Output : " + kg_answer + " Kg/cm^2");
+            console.log("Voltage Output : " + volt_answer + " Volt");
+            console.log("Current Output : " + mA_answer + " Millampare");
+        }
+
+        calbtn.addEventListener('click', calculate);
+
+    </script>
+</html>
